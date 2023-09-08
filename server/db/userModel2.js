@@ -168,3 +168,15 @@ module.exports = {
   Issue,
   Solution,
 };
+<Box className='small'>
+<TextField variant='standard' onChange={(e) => onInputChange(e)} name='password' label='Enter Password'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='passout_year' label='Passout year'/> 
+</Box>  
+<Box className='small'>
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='course_graduated' label='Course Garduated'/>   
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_mobile_Number' label='Mobile Number'/> 
+</Box>  
+<Box className='small'>     
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_location' label='Enter your location'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_college_name' label='Enter your college name'/> 
+</Box>

@@ -1,12 +1,14 @@
 import jwt  from "jsonwebtoken";
 import bcrypt from "bcrypt"
 import User from "./db/userModel.js";
-import auth from "./auth.js"
+import Home from "./auth.js"
 import express from "express"
+import cors from "cors"
 import dbConnect from "./db/dbConnect.js";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.post("/signup", (request, response) => {
     // hash the password
@@ -47,7 +49,8 @@ app.post("/signup", (request, response) => {
   });
   //to send data to server
   app.post('/login',(req,resp)=>{
-    User.findOne({ email: req.body.email })//check the user is the email is present or not 
+    User.findOne({ email: req.body.email })
+    //console.log(email)//check the user is the email is present or not 
     .then((user)=>{
       // if (!user) {
        // return resp.status(404).send({
@@ -84,14 +87,16 @@ app.post("/signup", (request, response) => {
         e,
       })
   });
+  
 });
+
 //to retrieve data from a server.
 app.get("/free-endpoint", (request, response) => {
   response.json({ message: "You are free to access me anytime" });
 });
 
 // authentication endpoint
-app.get("/auth-endpoint",auth, (request, response) => {
+app.get("/home",Home, (request, response) => {
   response.json({ message: "You are authorized to access me" });
 });
 
