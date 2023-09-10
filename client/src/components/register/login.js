@@ -1,10 +1,12 @@
 import React from 'react'
-import {Box, Button, TextField,styled, Typography, AppBar} from "@mui/material"
+import {Box, Button, TextField,styled, Typography, AppBar,Grid} from "@mui/material"
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import "./login.css"
 import axios from "axios"
+
 import Cookies from "universal-cookie";
+
 const cookies = new Cookies();
 
 
@@ -28,6 +30,7 @@ const Login = ({ isUserAuthenticated }) => {
     const[account,toggleAccount]= useState('login')
     const[signup,setSignup]=useState(signupInitialValues)
     const [login, setLogin] = useState(loginInitialValues);
+    
     const toggleSignup=()=>{
         account==='signup' ? toggleAccount('login'):toggleAccount('signup')
     }
@@ -80,7 +83,8 @@ const Login = ({ isUserAuthenticated }) => {
           cookies.set("TOKEN",response.data.token,{
             path:"/"
           })
-          isUserAuthenticated(true)
+          isUserAuthenticated(true);
+          
             setLogin(loginInitialValues);
             navigate('/home');
         })
@@ -97,6 +101,8 @@ const Login = ({ isUserAuthenticated }) => {
     <AppBar position="static" className='app1'><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Alumni Management System
           </Typography></AppBar>
+          <Grid container justifyContent="center"> {/* Use Grid container */}
+        <Grid item xs={12} sm={12} md={6} lg={4}>
     <Box className='contain'>
         
         <Box>
@@ -117,6 +123,18 @@ const Login = ({ isUserAuthenticated }) => {
                   <TextField variant='standard' onChange={(e) => onInputChange(e)} name='email' label='Enter email' />
         <TextField variant='standard'  onChange={(e) => onInputChange(e)} name='password' label='Enter password'/>
         </Box>
+        <Box className='small'>
+<TextField variant='standard' onChange={(e) => onInputChange(e)} name='password' label='Enter Password'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='passout_year' label='Passout year'/> 
+</Box>  
+<Box className='small'>
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='course_graduated' label='Course Garduated'/>   
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_mobile_Number' label='Mobile Number'/> 
+</Box>  
+<Box className='small'>     
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_location' label='Enter your location'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_college_name' label='Enter your college name'/> 
+</Box>
        
 
        <Button className='signupbtton' onClick={HandleSignup}>signup</Button>  
@@ -126,6 +144,8 @@ const Login = ({ isUserAuthenticated }) => {
             }
         </Box>
     </Box>
+    </Grid>
+    </Grid>
     </>
   )
 }
