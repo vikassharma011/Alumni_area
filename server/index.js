@@ -6,9 +6,12 @@ import express from "express"
 import cors from "cors"
 import dbConnect from "./db/dbConnect.js";
 
+
+
 const app = express();
 app.use(express.json());
 app.use(cors());
+//const url = 'http://localhost:8000';
 
 app.post("/signup", (request, response) => {
     // hash the password
@@ -90,10 +93,8 @@ app.post("/signup", (request, response) => {
   
 });
 
-//to retrieve data from a server.
-app.get("/free-endpoint", (request, response) => {
-  response.json({ message: "You are free to access me anytime" });
-});
+
+
 
 // authentication endpoint
 app.get("/home",Home, (request, response) => {
@@ -116,4 +117,5 @@ app.use((req, res, next) => {
   );
   next();
 });
+
 dbConnect();//connect from the mongodb database

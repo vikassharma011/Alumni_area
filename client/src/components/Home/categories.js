@@ -12,7 +12,7 @@ const StyledButton = styled(Button)`
     color: #fff;
     text-decoration: none;
 `;
-    
+
 const StyledLink = styled(Link)`
     text-decoration: none;
     color: inherit;

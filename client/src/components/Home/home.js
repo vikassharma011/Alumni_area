@@ -15,7 +15,7 @@ const Home = () => {
         // set configurations for the API call here
         const configuration = {
           method: "get",
-          url: "https://localhost:800/home",
+          url: "http://localhost:8000/home",
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { styled, Box, TextareaAutosize, Button, InputBase, FormControl  } from '@mui/material';
 import { AddCircle as Add } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-//import { API } from '../../service/api';
 
+//import { DataContext } from '../../context/DataProvider';
 
 const Container = styled(Box)(({ theme }) => ({
     margin: '50px 100px',
@@ -57,53 +57,49 @@ const CreatePost = () => {
 
     const [post, setPost] = useState(initialPost);
     const [file, setFile] = useState('');
-    
+   // const { account } = useContext(DataContext);
 
     const url = post.picture ? post.picture : 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
     
     useEffect(() => {
-      const handleImageUpload = async () => {
-        try {
-          if (file) {
-            const formData = new FormData();
-            formData.append("name", file.name);
-            formData.append("file", file);
+        const uploadImage = async () => {
+            if (file) {
+                try {
+                    const formData = new FormData();
+                    formData.append("file", file);
     
-            const uploadConfig = {
-              method: 'post',
-              url: 'YOUR_UPLOAD_API_ENDPOINT', // Update with your upload API endpoint
-              data: formData,
-              headers: {
-                'Content-Type': 'multipart/form-data',
-                // You may need to include any additional headers required by your API
-              },
-            };
+                    // Replace 'http://localhost:8000/upload' with the actual API endpoint
+                    const response = await axios.post("http://localhost:8000/upload", formData, {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                            
+                        },
+                    });
     
-            // Make the image upload request
-            const uploadResponse = await axios(uploadConfig);
+                    // Assuming the API returns the image URL in the response data
+                    const imageUrl = response.data;
+                    
+                    // Now you can use the 'imageUrl' as needed, for example, assign it to 'post.picture'
+                    post.picture = imageUrl;
+                } catch (error) {
+                    console.error("Error uploading image:", error);
+                }
+            }
+        };
     
-            // Assuming 'post' is a state variable
-            post.picture = uploadResponse.data;
-             
-            // Continue with any additional logic related to the 'post' object
-          }
-        } catch (error) {
-          console.error(error);
-          // Handle image upload error, e.g., show an error message to the user
-        }
-      };
+        // Call the uploadImage function when the 'file' dependency changes
+        uploadImage();
     
-      // Call the image upload function within the useEffect
-      handleImageUpload();
-      post.categories = location.search?.split('=')[1] || 'All';
-     
-    }, [file]);
+        // Rest of your code here...
+        post.categories = location.search?.split('=')[1] || 'All';
+        //post.username = account.username;
+    }, [file]); // Remove 'file' from the dependency array
     
 
-  /* const savePost = async () => {
-        await API.createPost(post);
-        navigate('/home');
-    }*/
+    const savePost = async () => {
+       // await API.createPost(post);
+        navigate('/');
+    }
 
     const handleChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
@@ -124,7 +120,7 @@ const CreatePost = () => {
                     onChange={(e) => setFile(e.target.files[0])}
                 />
                 <InputTextField onChange={(e) => handleChange(e)} name='title' placeholder="Title" />
-                <Button  variant="contained" color="primary">Publish</Button>
+                <Button onClick={() => savePost()} variant="contained" color="primary">Publish</Button>
             </StyledFormControl>
 
             <Textarea
