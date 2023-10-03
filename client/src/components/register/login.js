@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {Box, Button, TextField,styled, Typography, AppBar,Grid} from "@mui/material"
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
@@ -25,7 +25,7 @@ const loginInitialValues = {
     email:'',
     password:'',
 }
-const Login = ({ isUserAuthenticated }) => {
+const Login = ({ isUserAuthenticated}) => {
   const navigate = useNavigate();
     const[account,toggleAccount]= useState('login')
     const[signup,setSignup]=useState(signupInitialValues)
@@ -50,8 +50,12 @@ const Login = ({ isUserAuthenticated }) => {
       url: "http://localhost:8000/signup",
       data: JSON.stringify({
         email:signup.email,
-        password:signup.password
-      }),
+        password:signup.password,
+      }), headers: {
+        'Access-Control-Allow-Origin': '*', // or specify the allowed origins
+        'Content-Type': 'application/json', // Set the content type appropriately
+     
+      },
      
      };
      axios(configuration)
@@ -72,6 +76,7 @@ const Login = ({ isUserAuthenticated }) => {
         }), headers: {
           'Access-Control-Allow-Origin': '*', // or specify the allowed origins
           'Content-Type': 'application/json', // Set the content type appropriately
+       
         },
       };
   
@@ -84,7 +89,7 @@ const Login = ({ isUserAuthenticated }) => {
             path:"/"
           })
           isUserAuthenticated(true);
-          
+            
             setLogin(loginInitialValues);
             navigate('/home');
         })

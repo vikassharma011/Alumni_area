@@ -5,6 +5,8 @@ import axios from "axios"
 import Categories from './categories';
 import Banner from '../banner/banner';
 import Cookies from "universal-cookie";
+import Posts from './posts/Posts';
+
 const cookies = new Cookies();
 
 
@@ -41,7 +43,7 @@ const Home = () => {
                     <Categories />
                 </Grid>
                 <Grid container item xs={12} sm={10} lg={10}>
-                    {/*<Posts />*/}
+                    <Posts />
                 </Grid>
             </Grid>
      

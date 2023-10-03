@@ -1,0 +1,19 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .profile-list {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .profile-details {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Add any additional styles for responsiveness here */
+  
