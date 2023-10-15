@@ -1,0 +1,172 @@
+/* Contact.css */
+body {
+    background-color: #f7f5f0;
+    font-family: 'Roboto', sans-serif;
+    color: #222;
+  }
+  
+  .main-nav {
+    background: black;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    font-weight: 700;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .nav .name {
+    display: block;
+    margin-right: auto;
+    color: white;
+  }
+  
+  .nav li {
+    padding: 5px 10px 10px 10px;
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #999;
+    transition: color 0.5s;
+  }
+  
+  .nav a:hover {
+    color: #6633ff;
+  }
+  
+  .work_header {
+    height: 200px;
+    text-align: center;
+    background: url('images/work.jpg') no-repeat top center;
+    background-size: cover;
+    overflow: hidden;
+    padding-top: 60px;
+    transition: all 0.5s;
+  }
+  
+  .head_title {
+    display: inline-block;
+    margin-top: 85px;
+    color: white;
+    text-shadow: 1px 1px 30px #222;
+    font-size: 40px;
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .card {
+    margin: 30px;
+    padding: 20px;
+    max-width: 500px;
+    text-align: center;
+    background: #fff;
+    border-bottom: 4px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 3px 13px 143px -21px rgba(0, 0, 0, 0.51);
+    transition: all 0.5s;
+    letter-spacing: 0.125em;
+  }
+  
+  .card:hover {
+    border-color: #57102C;
+    border-top: 2px solid #57102C;
+    border-left: 2px solid #57102C;
+    border-right: 2px solid #57102C;
+  }
+  
+  .profile-image {
+    margin-top: 20px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid white;
+    transition: all 0.5s;
+  }
+  
+  .con {
+    padding-left: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #57102C;
+  }
+  
+  .details {
+    letter-spacing: 0.125em;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  a.email {
+    color: #6633ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.5s;
+  }
+  
+  a.email:hover {
+    color: #57102C;
+  }
+  
+  .contact_footer {
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .social {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background-size: 30px 30px;
+    opacity: 0.4;
+    transition: all 0.5s;
+  }
+  
+  .social.twitter {
+    background-image: url(images/twitter.svg);
+  }
+  
+  .social.linkedin {
+    background-image: url(images/linkedin.svg);
+  }
+  
+  .social.github {
+    background-image: url(images/github.svg);
+  }
+  
+  .social:hover {
+    opacity: 1;
+  }
+  
+  .copyright {
+    text-align: center;
+    font-size: 0.75em;
+    letter-spacing: 0.125em;
+    margin-top: 20px;
+  }
+  

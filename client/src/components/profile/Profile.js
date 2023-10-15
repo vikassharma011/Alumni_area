@@ -1,113 +1,68 @@
-import React, { useState } from 'react';
-import { Grid, Paper, TextField, Button, Typography , styled } from '@mui/material';
-//import styled from 'styled-components';
 
-const StyledContainer = styled(Grid)`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+// Profile.js
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Route, Routes } from "react-router-dom"; // Import Link from react-router-dom
 
-const StyledPaper = styled(Paper)`
-  padding: 20px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-`;
+import './Profile.css';
 
-const Profile = () => {
-  const initialProfile = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    collegeName: 'XYZ College',
-    city: 'New York',
-    address: '123 Main Street',
-    passingYear: '2020',
-    degree: 'Bachelor of Science',
-  };
 
-  const [profile, setProfile] = useState(initialProfile);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setProfile({ ...profile, [name]: value });
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add logic to update the profile here
-    console.log('Updated Profile:', profile);
-  };
-
+function Profile() {
   return (
-    <StyledContainer>
-      <form onSubmit={handleSubmit}>
-        <StyledPaper elevation={3}>
-          <Typography variant="h5">Update Profile</Typography>
-          <TextField
-            label="Name"
-            name="name"
-            value={profile.name}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Email"
-            name="email"
-            value={profile.email}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="College Name"
-            name="collegeName"
-            value={profile.collegeName}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="City"
-            name="city"
-            value={profile.city}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Address"
-            name="address"
-            value={profile.address}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Passing Year"
-            name="passingYear"
-            value={profile.passingYear}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Degree"
-            name="degree"
-            value={profile.degree}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Save
-          </Button>
-        </StyledPaper>
-      </form>
-    </StyledContainer>
+    <div>
+     
+      <div className="main-nav">
+        <ul className="nav">
+          <li className="name"><Link to="/rukona" className='link'>Yogita Verma</Link></li>
+          <li><Link to="/home" className='link'>Home</Link></li>
+          <li><Link to="/work" className='link'>Work</Link></li>
+          <li><Link to="/contact" className='link'>Contact</Link></li>
+          <li><Link to="/followerandall" className='link'>Followerandall</Link></li>
+        </ul>
+      </div>
+
+      <div className='header'>
+        <img src="images/me.jpg" alt="Yogita Verma" className="profile-image" />
+        <h1 className="tag name">Hello, I’m vikas.</h1>
+        <p className="tag location">I stay in Pune, India.</p>
+      </div>
+      <div className="thought">
+        <p>ENJOY THE LITTLE THINGS IN LIFE, ONE DAY YOU'LL LOOK BACK AND REALIZE THEY WERE THE BIG THINGS.</p>
+      </div>
+
+      <main className="flex">
+        <div className="card">
+          <h2>Background</h2>
+          <p>I’m an aspiring web developer who loves everything about the web. I've lived in lots of different places . I’m excited 
+          to bring my life experience to the process of building fantastic looking websites.</p>
+          <p>I have a bachelors degree in CS and I am a life-long learner who's always interested in expanding my skills.</p>
+        </div> 
+
+        <div className="card">
+          <h2>Goals</h2>
+          <p>I want to master the process of building web sites and increase my knowledge, skills and abilities in:</p>
+          <ul className="skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>JQuery</li>
+          </ul>
+          <p>I’d like to work for a web development firm in helping clients to create an impressive online presence.</p>
+        </div> 
+      </main>
+      <div className='footer'>
+        <ul>
+          <li><Link to="https://twitter.com/YogitaVerma20" className="social twitter" target="_blank">Twitter</Link></li>
+          <li><Link to="https://www.linkedin.com/in/yogita-verma1994/" className="social linkedin" target="_blank">LinkedIn</Link></li>
+          <li><Link to="https://github.com/Yog9" className="social github" target="_blank">Github</Link></li>
+        </ul>
+        <p className="copyright">Copyright 2018, Yogita Verma</p>
+      </div>
+    </div>
   );
-};
+}
 
 export default Profile;
+

@@ -5,7 +5,10 @@ import { useState } from 'react'
 import "./login.css"
 import axios from "axios"
 
+
+
 import Cookies from "universal-cookie";
+
 
 const cookies = new Cookies();
 
@@ -85,11 +88,12 @@ const Login = ({ isUserAuthenticated}) => {
           console.log(response);
           // Handle the login success, e.g., store the token in local storage
           
-          cookies.set("TOKEN",response.data.token,{
+          cookies.set("TOKEN",response.token,{
             path:"/"
           })
           isUserAuthenticated(true);
-            
+            localStorage.setItem("jwt",response.data.token);
+            localStorage.setItem("user",JSON.stringify(response.data.user));
             setLogin(loginInitialValues);
             navigate('/home');
         })

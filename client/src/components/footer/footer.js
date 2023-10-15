@@ -4,87 +4,86 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
   return (
     <Box bgcolor="primary.main" color="white" py={3}>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Important Links</Typography>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
               <li>
                 <Link href="#" target="_blank" color="inherit">
-                  <i className="fas fa-angle-right"></i> link add
+                  Link 1
                 </Link>
               </li>
               <li>
                 <Link href="#" target="_blank" color="inherit">
-                  <i className="fas fa-angle-right"></i> link add
+                  Link 2
                 </Link>
               </li>
               <li>
                 <Link href="#" target="_blank" color="inherit">
-                  <i className="fas fa-angle-right"></i> link add
+                  Link 3
                 </Link>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Quick Links</Typography>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
               <li>
                 <Link href="/" color="inherit">
-                  <i className="fas fa-angle-right"></i> Home
+                  Home
                 </Link>
               </li>
               <li>
-                <Link href="" color="inherit">
-                  <i className="fas fa-angle-right"></i> Alumni Registration
+                <Link href="/registration" color="inherit">
+                  Registration
                 </Link>
               </li>
               <li>
-                <Link href="" color="inherit">
-                  <i className="fas fa-angle-right"></i> News and Events
+                <Link href="/events" color="inherit">
+                  Events
                 </Link>
               </li>
               <li>
-                <Link href="" color="inherit">
-                  <i className="fas fa-angle-right"></i> Report An Error
+                <Link href="/contact" color="inherit">
+                  Contact
                 </Link>
               </li>
             </ul>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Contact</Typography>
             <Typography>
-              alumni please signup <br />
-              
-              <Link href="vikassharma9669@gmail.com" color="inherit">
-                <div style={{ marginTop: '10px' }}>
-                  <i className="fas fa-envelope"></i> 
-                </div>
-              </Link>
+              Email: <Link href="mailto:info@example.com" color="inherit">info@example.com</Link>
+            </Typography>
+            <Typography>
+              Phone: <Link href="tel:+123456789" color="inherit">+1 (234) 567-89</Link>
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Social</Typography>
-            <Box display="flex" justifyContent="space-between" width="80px">
-              <Link href="#" target="_blank" color="inherit">
-                <i className="fab fa-facebook"></i>
-              </Link>
-              <Link href="#" color="inherit">
-                <i className="fab fa-twitter"></i>
-              </Link>
-              <Link href="#" color="inherit">
-                <i className="fab fa-instagram"></i>
-              </Link>
-            </Box>
+            <IconButton href="#" target="_blank" color="inherit">
+              <FacebookIcon />
+            </IconButton>
+            <IconButton href="#" target="_blank" color="inherit">
+              <TwitterIcon />
+            </IconButton>
+            <IconButton href="#" target="_blank" color="inherit">
+              <InstagramIcon />
+            </IconButton>
           </Grid>
         </Grid>
         <Box mt={3}>
           <Typography variant="body2" align="center">
-            lorem
+            &copy; 2023 Your Company. All rights reserved.
           </Typography>
         </Box>
       </Container>
