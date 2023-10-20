@@ -1,0 +1,27 @@
+.vision-co {
+    color: #6D6D6D;
+    display: flex; /* Add this to make it a flex container */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    font-size: 1.1em;
+    line-height: 1.8;
+    
+  }
+  
+  .vision-quote {
+    margin-top: 30px; /* Adjust as needed */
+    display: flex;
+    align-items: center; /* Center the items vertically */
+    color: #A0A0A0;
+    font-size: 1.05em;
+  }
+  
+  .vision-quote img {
+    margin-right: 5px;
+  }
+  .bro{
+     list-style-type: disc; /* Use 'disc' for dot markers */
+  margin-left: 20px;  
+}

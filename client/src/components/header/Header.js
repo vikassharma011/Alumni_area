@@ -4,93 +4,102 @@ import {
   AppBar,
   Toolbar,
   styled,
-  colors,
   Hidden,
   IconButton,
   Menu,
   MenuItem,
+  Drawer,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
+import "./Header.css"
 
 const Component = styled(AppBar)`
-  background: #skyblue;
+  background: skyblue;
   color: black;
 `;
 
 const Container = styled(Toolbar)`
-  justify-content: right;
-
-  & > a {
-    padding: 20px;
-    color: #000;
-    font: Roboto;
-    text-decoration: none;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+const Header = ({isAuthenticated}) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleMenuButtonClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenuButtonClick = () => {
+    setIsDrawerOpen(true);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
   };
 
   return (
-    <Component>
-      <Hidden mdUp>
-        {/* Show menu button on small screens */}
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          onClick={handleMenuButtonClick}
-        >
-          <MenuIcon />
-        </IconButton>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}
-        >
-          <MenuItem>
-            <Link to="/home">HOME</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/about">ABOUT</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/contact">CONTACT</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/">LOGOUT</Link>
-          </MenuItem>
-          <MenuItem>
-            <Link to="/profile">PROFILE</Link>
-          </MenuItem>
-          <MenuItem>
-          <Link to="/explore">EXPLORE</Link>
-          </MenuItem>
-        </Menu>
-      </Hidden>
-      <Hidden smDown>
-        {/* Show the full menu on medium and larger screens */}
-        <Container>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+    <Component className='headed'>
+      <Container >
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/"><img src="https://www.shutterstock.com/image-vector/alumni-badge-graduation-hat-icon-260nw-591791072.jpg" className="navbar-image" alt='no server'/></Link>
             Welcome Alumni's
           </Typography>
+        <Hidden mdUp>
+          {/* Show menu button on small screens */}
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleMenuButtonClick}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Hidden>
+        <Hidden smDown>
+          {/* Show the full menu on medium and larger screens */}
+          <Link to="/home" className='heading'>HOME</Link>
+          <Link to="/about" className='heading'>ABOUT</Link>
+          <Link to="/event" className='heading'>EVENT</Link>
+          <Link to="/contact" className='heading'>CONTACT</Link>
+          
+          <Link to="/profile" className='heading'>PROFILE</Link>
+          <Link to="/explore" className='heading'>EXPLORE</Link>
+          {!isAuthenticated ? (
+            <Link className="loginbutton" to="/login" >Login</Link>
+          ):(
+            <div className="logged-buttons">
+            <Link className="loginbutton" to="/logout">Logout</Link>
+            
+            </div>
+          )}
+        </Hidden>
+      </Container>
+      <Drawer anchor="left" open={isDrawerOpen} onClose={handleDrawerClose}>
+        <MenuItem onClick={handleDrawerClose}>
           <Link to="/home">HOME</Link>
+        </MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           <Link to="/about">ABOUT</Link>
+        </MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           <Link to="/contact">CONTACT</Link>
-          <Link to="/">LOGOUT</Link>
+        </MenuItem>
+        
+        <MenuItem onClick={handleDrawerClose}>
           <Link to="/profile">PROFILE</Link>
+        </MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           <Link to="/explore">EXPLORE</Link>
-        </Container>
-      </Hidden>
+        </MenuItem>
+        <MenuItem>
+        {!isAuthenticated ? (
+            <Link className="loginbutton" to="/login" >Login</Link>
+          ):(
+            <div className="logged-buttons">
+            <Link className="loginbutton" to="/logout">Logout</Link>
+            
+            </div>
+          )}</MenuItem>
+      </Drawer>
     </Component>
   );
 };

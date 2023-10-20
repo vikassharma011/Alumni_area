@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt"
 import  jwt  from "jsonwebtoken";
+import nodemailer from 'nodemailer';
 import RequireLogin from "../middlewares/requireLogin.js"
 import POST from "../db/post.js";
 const User = mongoose.model("USER")
@@ -177,6 +178,34 @@ router.put('/comment', RequireLogin, async (req, res) => {
     res.json(result);
   } catch (err) {
     res.status(422).json({ error: err.message });
+  }
+});
+
+router.post('/send-email', async (req, res) => {
+  const { Name, Email, phone, message } = req.body;
+
+  // Configure Nodemailer to send the email
+  const transporter = nodemailer.createTransport({
+      service: 'Gmail', // e.g., 'Gmail'
+      auth: {
+          user: 'vikassharma4733@gmail.com',
+          pass: 'ohgw pkzs cglw znze',
+      },
+  });
+
+  const mailOptions = {
+      from: 'vikassharma4733@gmail.com',
+      to: 'vikassharma4733@gmail.com',
+      subject: 'Contact Form Submission',
+      text: `Name: ${Name}\nEmail: ${Email}\nPhone: ${phone}\nMessage: ${message}`,
+  };
+
+  try {
+      await transporter.sendMail(mailOptions);
+      res.sendStatus(200); // Send a success response
+  } catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: 'Failed to send email' }); // Send an error response
   }
 });
   

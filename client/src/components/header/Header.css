@@ -1,0 +1,10 @@
+.heading{
+    justify-content: space-between;
+    justify-content: space-around;
+    padding: 5px;
+}
+.headed{
+    background-color: rgb(239, 239, 245);
+    font-family:Arial, Helvetica, sans-serif;
+}
+  

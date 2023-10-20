@@ -1,0 +1,19 @@
+.tabs-con{
+    display: flex;
+    
+  }
+  .cus-tab{
+    display: flex;
+    flex-direction: column;
+    color: #110f0f;
+    font-size: 2.5em;
+    line-height: 1;
+    width: 400px;
+    cursor: pointer;
+    
+   
+  }
+  .active-tab{
+    color: #6c5a5a;
+  }
+  

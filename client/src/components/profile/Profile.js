@@ -18,7 +18,7 @@ function Profile() {
           <li className="name"><Link to="/rukona" className='link'>Yogita Verma</Link></li>
           <li><Link to="/home" className='link'>Home</Link></li>
           <li><Link to="/work" className='link'>Work</Link></li>
-          <li><Link to="/contact" className='link'>Contact</Link></li>
+          <li><Link to="/contactform" className='link'>Contact</Link></li>
           <li><Link to="/followerandall" className='link'>Followerandall</Link></li>
         </ul>
       </div>

@@ -1,0 +1,26 @@
+.about-con {
+    margin-top: 100px;
+    display:inline-flexbox ;
+    
+  }
+  #team{
+    width: 100%;
+    box-shadow: none;
+  }
+  .tab-menu{
+    width: 80%;
+    margin:auto;
+    
+  }
+  
+  .tabs-list-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .tab li{
+    font-size: 50px;
+    
+  }
+  

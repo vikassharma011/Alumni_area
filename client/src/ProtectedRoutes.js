@@ -11,7 +11,7 @@ const PrivateRoute = ({ isAuthenticated, ...props }) => {
   const token = cookies.get("TOKEN");
   return isAuthenticated && token ? 
     <>
-      <Header/>
+      <Header isAuthenticated={isAuthenticated}/>
       <Outlet />
       <Footer/>
       

@@ -1,0 +1,30 @@
+.news-banner-container{
+    padding: 20px 0;
+  }
+  .news-banner-header{
+    display: flex;
+    justify-content: space-between;
+  }
+  /* .news-banner-header div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6D6D6D;
+    width: 110%;
+  } */
+  .area{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #6D6D6D;
+    width: 110%;
+    padding: 20px 0;
+    
+  }
+  /* .text{
+    width: 40px;
+  } */
+  .image{
+    height: 50px;
+  }
+  

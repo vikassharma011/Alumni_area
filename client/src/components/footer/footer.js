@@ -9,6 +9,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
+
 const Footer = () => {
   return (
     <Box bgcolor="primary.main" color="white" py={3}>
@@ -61,10 +62,10 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Contact</Typography>
-            <Typography>
+            <Typography className='text-main'>
               Email: <Link href="mailto:info@example.com" color="inherit">info@example.com</Link>
             </Typography>
-            <Typography>
+            <Typography className='text-main'>
               Phone: <Link href="tel:+123456789" color="inherit">+1 (234) 567-89</Link>
             </Typography>
           </Grid>

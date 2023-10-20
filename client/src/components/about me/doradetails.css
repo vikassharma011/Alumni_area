@@ -1,0 +1,20 @@
+.dora-name{
+    color: #3880F4;
+    font-size: 1.2em;
+  }
+  .dora-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .dora-image img{
+    height: 300px;
+    width: 275px;
+  }
+  .dora-co {
+    width: 60%;
+    color: #6d6d6d;
+    font-size: 1.1em;
+  }
+  

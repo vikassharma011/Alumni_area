@@ -1,0 +1,20 @@
+.former-dean-card{
+    width: 230px;
+    height: 300px;
+  }
+  .former-dean-card-image{
+    width: 230px;
+    height: 200px;
+  }
+  .former-dean-card-co{
+    margin-left: 20px;
+    position: relative;
+  }
+  .years-of-service{
+    font-size: 1.1em;
+    color: #3880F4;
+  }
+  .dean-info-ro{
+    color: #A0A0A0;
+  }
+  

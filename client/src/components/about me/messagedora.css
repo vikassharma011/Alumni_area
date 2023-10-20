@@ -1,0 +1,26 @@
+.message-dora{
+    color: #fff;
+    background-color: #3880F4;
+    padding: 30px 0;
+    margin-top: 65px;
+    width: 100%;
+  }
+  .message-dora-co{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .message-dora-co{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 55%;
+  }
+  .message-video{
+    width: 370px;
+    height: 300px;
+    border: 20px solid #E5E5E5;
+    border-radius: 10px;
+  }
+
+  

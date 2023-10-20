@@ -1,0 +1,9 @@
+.sociallinks-con{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+  }
+  .sociallinks-con img {
+    height: 500px;
+  }
+  
