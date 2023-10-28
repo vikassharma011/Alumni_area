@@ -1,5 +1,8 @@
 import jwt  from "jsonwebtoken";
 import bcrypt from "bcrypt"
+import path from "path";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import User from "./db/userModel.js";
 //import Home from "./auth.js"
 import express from "express"
@@ -7,7 +10,8 @@ import cors from "cors"
 import router from "./routes/auth.js";
 import dbConnect from "./db/dbConnect.js";
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -37,9 +41,21 @@ app.get("/profile/:id", async (req, res) => {
 // app.get("/home",Home, (request, response) => {
 //   response.json({ message: "You are authorized to access me" });
 // });
+//serving the frontend
+app.use(express.static(path.join(__dirname, "./client/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.join(__dirname, "./client/build/index.html"),
+    function(err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
 
-  const PORT = 8000;
+  const PORT = process.env.port || 8000
 app.listen(PORT,()=>console.log(`server is running succefully in ${PORT}`))
 
 dbConnect();//connect from the mongodb database
