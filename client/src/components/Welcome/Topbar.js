@@ -98,6 +98,7 @@ const Topbar = ({isAuthenticated}) => {
           <Link to="/home">HOME</Link>
           <Link to="/about">ABOUT</Link>
           <Link to="/contact">CONTACT</Link>
+          <Link to="/chats">CHATS</Link>
          <Link to="/event">EVENTS</Link>
           <Link to="/profile">PROFILE</Link>
           <Link to="/explore">EXPLORE</Link>

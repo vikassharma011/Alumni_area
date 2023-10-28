@@ -18,6 +18,10 @@ import Welcome from './components/Welcome/Welcome';
 import Vision from './components/about me/Vision';
 import EventCar from './components/even/events';
 import ContactForm from './components/contactus/Contactus';
+import Chat from './components/Chats/Chats';
+import DetailView from './components/Home/blogs/detailview';
+import Search from './components/explore/Searchuser';
+// import Search from './components/Search/Search';
 
 
 function App() {
@@ -27,8 +31,8 @@ function App() {
   return (
     <div className="App" style={{marginTop:64}}>
    <Routes>
-           <Route path='/' element={<Welcome isAuthenticated={isAuthenticated} />}/>
-           <Route path='/event' element={<EventCar/>}/>
+           <Route path='/' element={<Welcome isAuthenticated={isAuthenticated} isUserAuthenticated={isUserAuthenticated} />}/>
+           <Route path='/event' element={<EventCar  isAuthenticated={isAuthenticated} />}/>
            <Route path='/login' element={<Login isUserAuthenticated={isUserAuthenticated} />}/>
            <Route path='/home' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
            <Route path='/home' element={<Home />} />
@@ -36,7 +40,7 @@ function App() {
            <Route path='/create' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
            <Route path='/create' element={<CreatePost />} />
            </Route>
-          
+          <Route path='/chats' element={<Chat/>}/>
            <Route path='/about' element={<Vision isAuthenticated={isAuthenticated}/>} />
            <Route path='/contact' element={<ContactForm isAuthenticated={isAuthenticated}/>} />
            
@@ -52,10 +56,21 @@ function App() {
           <Route path='/followerandall' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
            <Route path='/followerandall' element={<Followerandall/>} />
           </Route>
-           <Route path='/explore' element={<Explore/>}/> 
-           <Route path="/createPost" element={<Postcreation />}></Route>
+
+           <Route path='/explore' element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
+            <Route path='/explore' element={<Explore isAuthenticated={isAuthenticated} />} />
+            </Route>
+         
+          <Route path='/createPost' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
+           <Route path='/createPost' element={<Postcreation/>} />
+          </Route>
+          <Route path='/details/:id' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
+              <Route path='/details/:id' element={<DetailView />} />
+            </Route>
            <Route path="/profile/:userid" element={<UserProfile />}></Route>
-           
+           <Route path='/search' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
+              <Route path='/search' element={<Search/>} />
+            </Route>
         
       </Routes>
     </div>

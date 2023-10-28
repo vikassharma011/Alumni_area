@@ -24,14 +24,14 @@ hr {
 }
 
 .banner {
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/A_large_blank_world_map_with_oceans_marked_in_blue.PNG/1200px-A_large_blank_world_map_with_oceans_marked_in_blue.PNG");
+  background-image: url("https://wallpapers.com/images/featured/dark-nature-pictures-sf5wu61v1au0kwfk.jpg");
   background-repeat: no-repeat;
   padding: 20px 0;
 }
 
 .banner h1 {
   font-family: "Lato", sans-serif;
-  color: #ec5242;
+  color: white;
   font-weight: 900;
   padding-top: 20px;
   padding-left: 20px;
@@ -88,7 +88,7 @@ hr {
 }
 
 .programs {
-  background-image: url("https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Colorful-Circle-Simple-Background-Image-1.jpg");
+  background-image: url("https://wallpapers.com/images/featured/dark-nature-pictures-sf5wu61v1au0kwfk.jpg");
   padding-bottom: 20px;
 }
 
@@ -98,7 +98,7 @@ hr {
 
 .programs h3 {
   text-align: center;
-  color: #d3d3d3;
+  color: white;
   padding-top: 20px;
 }
 
@@ -243,7 +243,7 @@ hr {
 }
 
 .partner h3 {
-  color: #d3d3d3;
+  color: white;
   font-size: 30px;
   padding-top: 42px;
   text-align: center;

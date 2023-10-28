@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from React Router
+import { useState , useEffect } from 'react';
 import "./Profile.css"
 //import { colors } from '@mui/material';
 import "./contact.css"
@@ -7,14 +8,32 @@ import "./contact.css"
 
 
 function Contact() {
+  const[result,setResult] = useState({})
+  const[pic,setPic] = useState()
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        // setPic(result.posts);
+        setResult(result.user);
+        console.log(pic);
+      });
+  }, []);
   return (
     <div>
-      <div className="main-nav">
+       <div className="main-nav">
         <ul className="nav">
-          <li className="name"><Link to="/" >vikas sharma</Link></li>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/work">Work</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li className="name"><Link  className='link'>{result.fullName}</Link></li>
+          <li><Link to="/home" className='link'>Home</Link></li>
+          <li><Link to="/work" className='link'>Work</Link></li>
+          <li><Link to="/contactform" className='link'>Contact</Link></li>
+          <li><Link to="/followerandall" className='link'>Followerandall</Link></li>
         </ul>
       </div>
       <div className="work_header">
@@ -22,17 +41,17 @@ function Contact() {
       </div>
       <main className="flex">
         <div className="card work">
-          <img src="images/me.jpg" alt="Yogita Verma" className="profile-image" />
+          <img src={result.Photo} alt="Yogita Verma" className="profile-image" />
           <div className="con">
             <h2>Get in Touch:</h2>
-            <p className="details">Yogita Verma.</p>
-            <p><a href="mailto:veryogita@gmail.com">veryogita@gmail.com</a></p>
+            <p className="details">{result.CollageName}</p>
+            <p><a href={result.email}>{result.email}</a></p>
           </div>
           <footer className="contact_footer">
             <ul>
-              <li><Link to="https://twitter.com/YogitaVerma20" target="_blank" className="social twitter">Twitter</Link></li>
-              <li><Link to="https://www.linkedin.com/in/yogita-verma1994/" target="_blank" className="social linkedin">LinkedIn</Link></li>
-              <li><Link to="https://github.com/Yog9" target="_blank" className="social github">Github</Link></li>
+              <li><Link to="https://twitter.com/" target="_blank" className="social twitter">Twitter</Link></li>
+              <li><Link to="https://www.linkedin.com/in/" target="_blank" className="social linkedin">LinkedIn</Link></li>
+              <li><Link to="https://github.com/" target="_blank" className="social github">Github</Link></li>
             </ul>
           </footer>
         </div>

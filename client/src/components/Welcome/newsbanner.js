@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import NewsCard from './newscard';
 import "./newsbanner.css"
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { styled } from '@mui/material'; // Import styled from Material-UI
 
@@ -51,7 +52,7 @@ function NewsBanner() {
         </Grid>
         <Grid item xs={12}>
           <MediumBlogLink href="" className='text'>
-            <img src="https://cdn-icons-png.flaticon.com/128/56/56763.png" alt="menu icon" className='image'/>
+           <MenuIcon/>
             View all articles
           </MediumBlogLink>
         </Grid>

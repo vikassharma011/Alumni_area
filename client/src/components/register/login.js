@@ -27,6 +27,13 @@ const Image = styled('img')({
 const loginInitialValues = {
     email:'',
     password:'',
+    fullName:'',
+    CollageName:'',
+    Graduated_year:'',
+    Enter_mobile_Number:'',
+    Enter_your_location:'',
+    Company_Name:''
+
 }
 const Login = ({ isUserAuthenticated}) => {
   const navigate = useNavigate();
@@ -54,6 +61,12 @@ const Login = ({ isUserAuthenticated}) => {
       data: JSON.stringify({
         email:signup.email,
         password:signup.password,
+        fullName:signup.fullName,
+        CollageName:signup.CollageName,
+        Graduated_year:signup.Graduated_year,
+        Enter_mobile_Number:signup.Enter_mobile_Number,
+        Enter_your_location:signup.Enter_your_location,
+        Company_Name:signup.Company_Name
       }), headers: {
         'Access-Control-Allow-Origin': '*', // or specify the allowed origins
         'Content-Type': 'application/json', // Set the content type appropriately
@@ -62,7 +75,9 @@ const Login = ({ isUserAuthenticated}) => {
      
      };
      axios(configuration)
-    .then((result) => {console.log(result);}
+    .then((result) => {console.log(result);
+        window.confirm("user create! now click already have an account")
+    }
     
     )
     .catch((error) => {console.log(error);})
@@ -129,20 +144,20 @@ const Login = ({ isUserAuthenticated}) => {
                 :
                 <Box className="wrapper">
                     <Box className='small'>
-                  <TextField variant='standard' onChange={(e) => onInputChange(e)} name='email' label='Enter email' />
-        <TextField variant='standard'  onChange={(e) => onInputChange(e)} name='password' label='Enter password'/>
+                  <TextField variant='standard' onChange={(e) => onInputChange(e)} name='email' label='Enter Email' />
+        <TextField variant='standard'  onChange={(e) => onInputChange(e)} name='password' label='Enter Password'/>
         </Box>
         <Box className='small'>
-<TextField variant='standard' onChange={(e) => onInputChange(e)} name='password' label='Enter Password'/> 
-<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='passout_year' label='Passout year'/> 
+<TextField variant='standard' onChange={(e) => onInputChange(e)} name='fullName' label='Enter Your Name'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='CollageName' label='College Name'/> 
 </Box>  
 <Box className='small'>
-<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='course_graduated' label='Course Garduated'/>   
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Graduated_year' label='Garduated year'/>   
 <TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_mobile_Number' label='Mobile Number'/> 
 </Box>  
 <Box className='small'>     
 <TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_location' label='Enter your location'/> 
-<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Enter_your_college_name' label='Enter your college name'/> 
+<TextField variant='standard'  onChange={(e) => onInputChange(e)} name='Company_Name' label='Enter your company name'/> 
 </Box>
        
 

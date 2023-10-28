@@ -1,6 +1,7 @@
 
 // Profile.js
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Route, Routes } from "react-router-dom"; // Import Link from react-router-dom
 
@@ -9,13 +10,32 @@ import './Profile.css';
 
 
 
+
 function Profile() {
+
+  const[result,setResult] = useState({})
+  const[pic,setPic] = useState()
+
+  useEffect(() => {
+    fetch(`http://localhost:8000/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result)
+        // setPic(result.posts);
+        setResult(result.user);
+        console.log(pic);
+      });
+  }, []);
   return (
     <div>
      
       <div className="main-nav">
         <ul className="nav">
-          <li className="name"><Link to="/rukona" className='link'>Yogita Verma</Link></li>
+          <li className="name"><Link  className='link'>{result.fullName}</Link></li>
           <li><Link to="/home" className='link'>Home</Link></li>
           <li><Link to="/work" className='link'>Work</Link></li>
           <li><Link to="/contactform" className='link'>Contact</Link></li>
@@ -24,9 +44,9 @@ function Profile() {
       </div>
 
       <div className='header'>
-        <img src="images/me.jpg" alt="Yogita Verma" className="profile-image" />
-        <h1 className="tag name">Hello, I’m vikas.</h1>
-        <p className="tag location">I stay in Pune, India.</p>
+        <img src={result.Photo} alt="Yogita Verma" className="profile-image" />
+        <h1 className="tag name">Hello, I’m {result.fullName}.</h1>
+        <p className="tag-location">I stay {result.Enter_your_location}.</p>
       </div>
       <div className="thought">
         <p>ENJOY THE LITTLE THINGS IN LIFE, ONE DAY YOU'LL LOOK BACK AND REALIZE THEY WERE THE BIG THINGS.</p>
@@ -58,7 +78,7 @@ function Profile() {
           <li><Link to="https://www.linkedin.com/in/yogita-verma1994/" className="social linkedin" target="_blank">LinkedIn</Link></li>
           <li><Link to="https://github.com/Yog9" className="social github" target="_blank">Github</Link></li>
         </ul>
-        <p className="copyright">Copyright 2018, Yogita Verma</p>
+        <p className="copyright">Copyright 2018, {result.fullName}</p>
       </div>
     </div>
   );

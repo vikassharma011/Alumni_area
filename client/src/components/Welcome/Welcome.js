@@ -9,7 +9,7 @@ function Welcome({isAuthenticated}) {
   return (
     <div>
       <section className="header">
-        <Header/>
+        <Header isAuthenticated={isAuthenticated}/>
         <div className="textbox">
           <h1>ALUMNI AREA</h1>
           <p>

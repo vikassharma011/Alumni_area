@@ -13,6 +13,8 @@ import {
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./Header.css"
+import { useNavigate } from 'react-router-dom';
+
 
 const Component = styled(AppBar)`
   background: skyblue;
@@ -27,6 +29,7 @@ const Container = styled(Toolbar)`
 
 const Header = ({isAuthenticated}) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const navigate = useNavigate()
 
   const handleMenuButtonClick = () => {
     setIsDrawerOpen(true);
@@ -36,6 +39,13 @@ const Header = ({isAuthenticated}) => {
     setIsDrawerOpen(false);
   };
 
+  const handleclick = () => {
+    if (window.confirm("Are you sure you want to log out?")) {
+      localStorage.clear();
+      window.location.reload();
+      navigate("/")
+  }
+  }
   return (
     <Component className='headed'>
       <Container >
@@ -60,14 +70,14 @@ const Header = ({isAuthenticated}) => {
           <Link to="/about" className='heading'>ABOUT</Link>
           <Link to="/event" className='heading'>EVENT</Link>
           <Link to="/contact" className='heading'>CONTACT</Link>
-          
+          <Link to="/chats">CHATS</Link>
           <Link to="/profile" className='heading'>PROFILE</Link>
           <Link to="/explore" className='heading'>EXPLORE</Link>
           {!isAuthenticated ? (
             <Link className="loginbutton" to="/login" >Login</Link>
           ):(
             <div className="logged-buttons">
-            <Link className="loginbutton" to="/logout">Logout</Link>
+            <Link className="loginbutton" onClick={handleclick}>Logout</Link>
             
             </div>
           )}
@@ -95,7 +105,7 @@ const Header = ({isAuthenticated}) => {
             <Link className="loginbutton" to="/login" >Login</Link>
           ):(
             <div className="logged-buttons">
-            <Link className="loginbutton" to="/logout">Logout</Link>
+            <Link className="loginbutton" onClick={handleclick}>Logout</Link>
             
             </div>
           )}</MenuItem>

@@ -2,11 +2,13 @@ img{
     width: 10%;
     object-fit: contain;
 }
-
-.navbar{
+.colorme{
+   color:white;
+}
+.real-page{
     display: flex;
     justify-content: space-around;
-    
+    flex-direction: row;
     box-shadow: 1px 5px 5px #e0dcdc;
 }
 
@@ -16,7 +18,7 @@ ul{
     
 }
 
-li{
+.name{
     list-style: none;
     padding: 1px 20px;
 }
@@ -27,7 +29,7 @@ a{
     font-size: 18px;
 }
 
-.primaryBtn{
+.Btn{
     cursor: pointer;
     font-weight: bolder;
     padding: 13px 25px;
@@ -40,7 +42,7 @@ a{
     transition: all 0.25s ease;
 }
 
-.primaryBtn:hover{
+.Btn:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 20px -10px rgba(219, 24, 44, 0.6);
 }

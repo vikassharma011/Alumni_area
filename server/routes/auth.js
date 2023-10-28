@@ -5,8 +5,16 @@ import  jwt  from "jsonwebtoken";
 import nodemailer from 'nodemailer';
 import RequireLogin from "../middlewares/requireLogin.js"
 import POST from "../db/post.js";
+//import Chat from "../db/chatModel.js";
+//import Message from "../db/messageModel.js";
+import blog from "../db/blog.js";
+import MESSAGE from "../db/messageModel.js";
+import CHAT from "../db/chatModel.js";
 const User = mongoose.model("USER")
 const Post = mongoose.model("POST")
+const Chat = mongoose.model("CHAT")
+const BLOG = mongoose.model("BLOG")
+const Message = mongoose.model("MESSAGE")
 const router = express.Router();
 
 router.post("/signup", (request, response) => {
@@ -19,6 +27,12 @@ router.post("/signup", (request, response) => {
         const user = new User({
           email: request.body.email,
           password: hashedPassword,
+          fullName : request.body.fullName ,
+          CollageName : request.body.CollageName ,
+          Graduated_year : request.body.Graduated_year ,
+         Enter_mobile_Number : request.body.Enter_mobile_Number ,
+          Enter_your_location : request.body.Enter_your_location ,
+           Company_Name : request.body.Company_Name
         });
   
         // save the new user
@@ -300,6 +314,131 @@ router.put("/uploadProfilePic", RequireLogin, async (req, res) => {
     res.json(updatedUser);
   } catch (err) {
     res.status(422).json({ error: err.message });
+  }
+});
+//now lets start our chat section
+router.post("/chat", async (req,res)=>{
+  const newChat = new CHAT({
+    members:[req.body.senderId,req.body.receiverId],
+  });
+  try{
+    const result  = await newChat.save();
+    res.status(200).json(result);
+
+  }catch(error){
+    res.status(500).json(error);
+   
+  }
+})
+
+router.get("/chat/:userId", async (req,res)=>{
+  try{
+    const chatya = await CHAT.find({
+      members:{$in:[req.params.userId]},
+    });
+    res.status(200).json(chatya);
+  }
+  catch(error){
+    res.status(500).json(error);
+  }
+})
+
+router.get("/find/:firstId/:secondId",async (req,res)=>{
+  try{
+    const chatyaa = await CHAT.findOne({
+      members:{$all:[req.params.firstId,req.params.secondId]}
+    });
+    res.status(200).json(chatyaa)
+  }catch(error){
+    res.status(500).json(error)
+  }
+})
+
+router.post("/message",async(req,res)=>{
+  const {chatId,senderId,text} = req.body;
+  const message = new MESSAGE({
+    chatId,
+    senderId,
+    text,
+  });
+  try{
+    const result = await message.save()
+    res.status(200).json(result);
+  }catch (error) {
+    res.status(500).json(error);
+  }
+})
+
+router.get("/message/:chatId",async (req, res) => {
+  const { chatId } = req.params;
+  try {
+    const result = await MESSAGE.find({ chatId });
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
+
+//blog routes
+router.post("/createBlog",RequireLogin,async (req, res) => {
+  const { title,description,createdDate, pic } = req.body;
+    // console.log(pic)
+    // if (!body || !pic) {
+    //     return res.status(422).json({ error: "Please add all the fields" })
+    // }
+  try {
+      const newBlog = await new BLOG({
+        title,
+        description,
+        picture:pic,
+        createdDate,
+        postedBy: req.user
+      });
+      newBlog.save();
+
+      res.status(200).json('Post saved successfully');
+  } catch (error) {
+      res.status(500).json(error);
+  }
+})
+
+router.get("/allblog", (req, res) => {
+  BLOG.find()
+      .populate("postedBy", "_id Photo email")
+      //.populate("comments.postedBy", "_id name")
+      //.sort("-createdAt")
+      .then(blog => res.json(blog))
+      .catch(err => console.log(err))
+})
+
+router.get("/blogbyid/:id",RequireLogin,async (request, response) => {
+  try {
+      const blog = await BLOG.findById(request.params.id);
+    
+      response.status(200).json(blog);
+  } catch (error) {
+      response.status(500).json(error)
+  }
+})
+//search
+router.get('/api/users/:username', async (req, res) => {
+  const { username } = req.params;
+
+  //console.log('Searching for user with email:', email);
+
+  try {
+    const user = await User.findOne({ email : username});
+    console.log('User found:', user);
+
+    if (!user) {
+     res.status(404).json({ message: 'User not found' });
+    }
+    const posts = await Post.find({ postedBy: user._id });
+
+    res.json({ user, posts });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 

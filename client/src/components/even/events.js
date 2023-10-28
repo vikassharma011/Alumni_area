@@ -2,11 +2,13 @@
 import React from 'react';
 import "./event.css"
 import Topbar from '../Welcome/Topbar';
+//import Header from '../header/Header';
 
-const EventCar = () => {
+
+const EventCar = ({isAuthenticated}) => {
   return (
     <div>
-      <Topbar/>
+       <Topbar isAuthenticated={isAuthenticated}/>
       <header>
         <div className="open">
           <span className="cls"></span>
@@ -63,7 +65,7 @@ const EventCar = () => {
           <div className="program-lineout">
             <div id="program-0" className="p-cards">
               <img src="images/icon4.png" alt="" />
-              <p className="title">Lecture</p>
+              <p className="title" color='white'>Lecture</p>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
             <div id="program-1" className="p-cards">

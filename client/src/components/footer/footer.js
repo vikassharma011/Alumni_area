@@ -62,10 +62,10 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6">Contact</Typography>
-            <Typography className='text-main'>
+            <Typography className='text-mainnn' color="inherit">
               Email: <Link href="mailto:info@example.com" color="inherit">info@example.com</Link>
             </Typography>
-            <Typography className='text-main'>
+            <Typography className='text-mainnn' color="inherit">
               Phone: <Link href="tel:+123456789" color="inherit">+1 (234) 567-89</Link>
             </Typography>
           </Grid>
@@ -83,7 +83,7 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Box mt={3}>
-          <Typography variant="body2" align="center">
+          <Typography variant="body2" align="center" color="inherit" className='text-mainnn'>
             &copy; 2023 Your Company. All rights reserved.
           </Typography>
         </Box>

@@ -1,9 +1,10 @@
-.card{
+.cardhain{
     max-width: 500px;
     height: max-content;
     margin: 25px auto;
-    border: 1px solid rgb(173, 173, 173);
+    border: 1px solid #ffffff;
     border-radius: 5px;
+    background-color: white;
 }
 
 .card-header{
@@ -121,7 +122,11 @@
     cursor: pointer;
 }
 
-
+.home{
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
 .material-symbols-outlined-comment {
     font-size: 50px;
   font-variation-settings:

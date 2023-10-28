@@ -24,7 +24,7 @@ const Categories = () => {
   return (
     <>
     <Link to={`/create?category=${category || ''}`} style={{ textDecoration: 'none' }}>
-        <StyledButton variant="contained">Create Post</StyledButton>
+        <StyledButton variant="contained">Create Blog</StyledButton>
     </Link>
     
     <StyledTable>

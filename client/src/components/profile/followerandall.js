@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./followerandall.css";
 import PostDetail from "../explore/postdetail";
 import ProfilePic from "./profilepic";
+import { Link } from "react-router-dom";
+import "./Profile.css"
+
 
 export default function Followerandall() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
@@ -44,7 +47,16 @@ export default function Followerandall() {
   }, []);
 
   return (
+    <>
+     <ul className="nav">
+          <li className="name"><Link to="/" >{user.fullName}</Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/work">Work</Link></li>
+          <li><Link to="/contactform">Contact</Link></li>
+          <li><Link to="/followerandall" className='link'>Followerandall</Link></li>
+        </ul>
     <div className="profile">
+      
       {/* Profile frame */}
       <div className="profile-frame">
         {/* profile-pic */}
@@ -57,7 +69,7 @@ export default function Followerandall() {
         </div>
         {/* profile-data */}
         <div className="pofile-data">
-          <h1>{user.email}</h1> {/* Add a default value in case user.name is not available */}
+          <h1>{user.fullName}</h1> {/* Add a default value in case user.name is not available */}
           <div className="profile-info" style={{ display: "flex" }}>
           <p>{pic.length} posts</p>
             <p>{user.followers ? user.followers.length : "0"} followers</p> 
@@ -97,5 +109,6 @@ export default function Followerandall() {
         <ProfilePic changeprofile={changeprofile} />
       }
     </div>
+    </>
   );
 }

@@ -139,7 +139,7 @@ export default function Mainpage() {
       {/* card */}
       {data.map((posts) => {
         return (
-          <div className="card">
+          <div className="cardhain">
             {/* card header */}
             <div className="card-header">
               <div className="card-pic">

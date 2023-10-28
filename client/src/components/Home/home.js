@@ -5,7 +5,7 @@ import axios from "axios"
 import Categories from './categories';
 import Banner from '../banner/banner';
 import Cookies from "universal-cookie";
-import Posts from './posts/Posts';
+import Posts from './blogs/Posts';
 
 const cookies = new Cookies();
 

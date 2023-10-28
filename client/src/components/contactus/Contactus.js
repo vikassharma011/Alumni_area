@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import "./Contactus.css";
 import Header from '../header/Header';
+import IconButton from '@mui/material/IconButton';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
 //import Footer from '../footer/footer';
 
 const ContactForm = () => {
@@ -49,7 +53,7 @@ const ContactForm = () => {
       <img src="img/shape.png" className="square" alt="" />
       <div className="form">
         <div className="contact-info">
-          <h3 className="ti">Let's get in touch</h3>
+          <h3 className="ti">Alumni! Let's get in touch</h3>
           <p className="text">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe dolorum adipisci recusandae praesentium dicta!
           </p>
@@ -72,18 +76,15 @@ const ContactForm = () => {
           <div className="social-media">
             <p>Connect with us :</p>
             <div className="social-icons">
-              <a href="#">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-twitter"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+            <IconButton href="#" target="_blank" color="inherit">
+              <FacebookIcon />
+            </IconButton>
+            <IconButton href="#" target="_blank" color="inherit">
+              <TwitterIcon />
+            </IconButton>
+            <IconButton href="#" target="_blank" color="inherit">
+              <InstagramIcon />
+            </IconButton>
             </div>
           </div>
         </div>

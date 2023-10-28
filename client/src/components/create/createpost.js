@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+
 import { styled, Box, TextareaAutosize, Button, InputBase, FormControl  } from '@mui/material';
 import { AddCircle as Add } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 //import { DataContext } from '../../context/DataProvider';
@@ -45,61 +46,82 @@ const Textarea = styled(TextareaAutosize)`
 const initialPost = {
     title: '',
     description: '',
-    picture: '',
-    username: '',
     categories: '',
     createdDate: new Date()
 }
 
 const CreatePost = () => {
     const navigate = useNavigate();
-    const location = useLocation();
+   
 
     const [post, setPost] = useState(initialPost);
+  //  const [picture,setPicture] = useState("")
     const [file, setFile] = useState('');
    // const { account } = useContext(DataContext);
 
-    const url = post.picture ? post.picture : 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
+    const newurl = post.picture ? post.picture : 'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80';
     
-    useEffect(() => {
-        const uploadImage = async () => {
-            if (file) {
-                try {
-                    const formData = new FormData();
-                    formData.append("file", file);
-    
-                    // Replace 'http://localhost:8000/upload' with the actual API endpoint
-                    const response = await axios.post("http://localhost:8000/upload", formData, {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                            
-                        },
-                    });
-    
-                    // Assuming the API returns the image URL in the response data
-                    const imageUrl = response.data;
-                    
-                    // Now you can use the 'imageUrl' as needed, for example, assign it to 'post.picture'
-                    post.picture = imageUrl;
-                } catch (error) {
-                    console.error("Error uploading image:", error);
-                }
-            }
-        };
-    
-        // Call the uploadImage function when the 'file' dependency changes
-        uploadImage();
-    
-        // Rest of your code here...
-        post.categories = location.search?.split('=')[1] || 'All';
-        //post.username = account.username;
-    }, [file]); // Remove 'file' from the dependency array
-    
+    const [body, setBody] = useState("");
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
+  
+  
+ 
 
-    const savePost = async () => {
-       // await API.createPost(post);
-        navigate('/');
+  useEffect(() => {
+    // saving post to mongodb
+    if (url) {
+      fetch("http://localhost:8000/createBlog", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + localStorage.getItem("jwt")
+        },
+        body: JSON.stringify({
+         title:post.title,
+         description:post.description,
+         createdDate : post.createdDate,
+          pic: url,
+         
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+            // notifyA(data.error);
+            console.log(data.error)
+          } else {
+            // notifyB("Successfully Posted");
+            navigate("/home");
+          }
+        })
+        .catch(err => console.log(err));
     }
+  }, [url, post, navigate]);
+
+  // posting image to cloudinary
+  const BlogDetails = () => {
+    console.log(body, file);
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "isa-project");
+    data.append("cloud_name", "cloud-content");
+    fetch("https://api.cloudinary.com/v1_1/cloud-content/image/upload", {
+      method: "post",
+      body: data
+    })
+      .then(res => res.json())
+      .then(data => setUrl(data.url))
+      .catch(err => console.log(err));
+  };
+
+  const loadfile = (event) => {
+    var output = document.getElementById("output");
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+      URL.revokeObjectURL(output.src); // free memory
+    };
+  };
 
     const handleChange = (e) => {
         setPost({ ...post, [e.target.name]: e.target.value });
@@ -107,7 +129,7 @@ const CreatePost = () => {
 
     return (
         <Container>
-            <Image src={url} alt="post" />
+            <Image id="output" src={newurl} alt="post" />
 
             <StyledFormControl>
                 <label htmlFor="fileInput">
@@ -117,10 +139,13 @@ const CreatePost = () => {
                     type="file"
                     id="fileInput"
                     style={{ display: "none" }}
-                    onChange={(e) => setFile(e.target.files[0])}
+                    onChange={(event) => {
+                        loadfile(event);
+                        setFile(event.target.files[0]);
+                    }}
                 />
                 <InputTextField onChange={(e) => handleChange(e)} name='title' placeholder="Title" />
-                <Button onClick={() => savePost()} variant="contained" color="primary">Publish</Button>
+                <Button onClick={() => {BlogDetails()}}  variant="contained" color="primary">Publish</Button>
             </StyledFormControl>
 
             <Textarea

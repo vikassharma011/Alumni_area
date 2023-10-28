@@ -13,6 +13,32 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Please provide a password!"],
         unique: false,
       },
+      fullName: {
+        type: String,
+        required: [true, "Please provide!"],
+        unique: false,
+      },
+      CollageName: {
+        type: String,
+        required: [true, "Please provide!"],
+        unique: false,
+      },
+      Graduated_year: {
+        type: String,
+        required: [true, "Please provide"],
+        unique: false,
+      },
+      Enter_mobile_Number: {
+        type: String,
+        required: [true, "Please provide "],
+        unique: false,
+      },
+      Enter_your_location: {
+        type: String,
+        required: [true, "Please provide !"],
+        unique: false,
+      }
+      ,
       Photo: {
         type: String,
     },
