@@ -55,7 +55,7 @@ app.get("*", (req, res) => {
   );
 });
 
-  const PORT = process.env.port || 8000
+  const PORT = process.env.PORT|| 8000
 app.listen(PORT,()=>console.log(`server is running succefully in ${PORT}`))
 
 dbConnect();//connect from the mongodb database
