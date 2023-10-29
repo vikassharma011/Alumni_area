@@ -93,7 +93,12 @@ const Header = ({isAuthenticated}) => {
         <MenuItem onClick={handleDrawerClose}>
           <Link to="/contact">CONTACT</Link>
         </MenuItem>
-        
+        <MenuItem onClick={handleDrawerClose}>
+          <Link to="/chats">CHATS</Link>
+        </MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
+          <Link to="/event">EVENTS</Link>
+        </MenuItem>
         <MenuItem onClick={handleDrawerClose}>
           <Link to="/profile">PROFILE</Link>
         </MenuItem>
