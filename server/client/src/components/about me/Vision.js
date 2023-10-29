@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Grid from '@mui/material/Grid';
 import Topbar from '../Welcome/Topbar.js';
 import VisionTab from './Visiontab.js';
 import Dora from './Dora.js';
@@ -6,10 +7,9 @@ import Team from './Team.js';
 import SocialLinks from './SocialLinks.js';
 import Tab from './Tab.js';
 import Footer from '../footer/footer.js';
-//import LandingFooter from '../Components/landingFooter.jsx';
 import "./Vision.css"
 
-function Vision({isAuthenticated}) {
+function Vision({ isAuthenticated }) {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
@@ -21,8 +21,8 @@ function Vision({isAuthenticated}) {
 
   const tabContent = [
     <div id="vision" className="about-con">
-       <VisionTab/>
-     </div>,
+      <VisionTab />
+    </div>,
     <div id="dora" className="about-con">
       <Dora />
     </div>,
@@ -40,16 +40,20 @@ function Vision({isAuthenticated}) {
 
   return (
     <div>
-      <Topbar isAuthenticated={isAuthenticated}/>
-       <div className="about-con">
-        <div className="ro">
-          <div className="con">
-            <Tab tabs={tabs} onClick={tabClick} activeTab={activeTab} />
+      <Topbar isAuthenticated={isAuthenticated} />
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={4}>
+          <div className="ro">
+            <div className="con">
+              <Tab tabs={tabs} onClick={tabClick} activeTab={activeTab} />
+            </div>
           </div>
+        </Grid>
+        <Grid item xs={12} sm={8}>
           {tabContent[activeTab]}
-        </div>
-  </div>
-      <Footer/>
+        </Grid>
+      </Grid>
+      <Footer />
     </div>
   );
 }
