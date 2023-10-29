@@ -26,7 +26,12 @@ const ContactForm = () => {
 
             if (response.ok) {
                 // Handle success, e.g., show a success message
+                window.confirm("email sent succesfully");
                 console.log('Email sent successfully');
+                setName("");
+                setEmail("");
+                setMessage("");
+                setPhone("");
             } else {
                 // Handle error, e.g., show an error message
                 console.error('Failed to send email');
