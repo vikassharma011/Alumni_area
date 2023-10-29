@@ -1,6 +1,7 @@
 .about-con {
     margin-top: 100px;
     display:inline-flexbox ;
+    padding: 10px;
     
   }
   #team{
@@ -22,5 +23,8 @@
   .tab li{
     font-size: 50px;
     
+  }
+  .vision-active-tab{
+    color: #6c5a5a;
   }
   
