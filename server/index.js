@@ -41,6 +41,8 @@ app.get("/profile/:id", async (req, res) => {
 // app.get("/home",Home, (request, response) => {
 //   response.json({ message: "You are authorized to access me" });
 // });
+//console.log(process.cwd());
+
 //serving the frontend
 app.use(express.static(path.join(__dirname, "./client/build")));
 
