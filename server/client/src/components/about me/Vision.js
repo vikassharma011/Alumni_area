@@ -43,8 +43,8 @@ function Vision({ isAuthenticated }) {
       <Topbar isAuthenticated={isAuthenticated} />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
-          <div className="ro">
-            <div className="con">
+          <div className="vision-ro">
+            <div className="vision-con">
               <Tab tabs={tabs} onClick={tabClick} activeTab={activeTab} />
             </div>
           </div>
