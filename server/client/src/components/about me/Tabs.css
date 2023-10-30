@@ -1,8 +1,8 @@
-.vision-tabs-con{
+.tabs-con{
     display: flex;
     
   }
-  .vision-cus-tab{
+  .cus-tab{
     display: flex;
     flex-direction: column;
     color: #110f0f;
@@ -13,7 +13,7 @@
     
    
   }
-  .vision-active-tab{
+  .active-tab{
     color: #6c5a5a;
   }
   

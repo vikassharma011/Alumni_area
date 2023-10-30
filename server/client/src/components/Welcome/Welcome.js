@@ -11,7 +11,7 @@ function Welcome({isAuthenticated}) {
       <section className="header">
         <Header isAuthenticated={isAuthenticated}/>
         <div className="textbox">
-          <h1>ALUMNI AREA</h1>
+          <h1>ALUMNI AREA'S</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
             molestias nemo officia quos, autem totam laudantium amet iure quae

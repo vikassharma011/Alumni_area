@@ -1,0 +1,312 @@
+
+
+hr{
+  border: 0.5px solid rgba(169, 169, 169, 0.438);
+  border-radius: 50px;
+}
+
+.navBar{
+  top: 0;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(239, 239, 239);
+  padding-left: 50px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  width: 100%;
+  z-index: 1;
+}
+
+
+.leftSection{
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+
+.companyLogo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+  width: max-content;
+  height: max-content;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.companyLogo:hover{
+  cursor: pointer;
+  h1{
+    color: rgb(15, 210, 210);
+  }
+}
+a:focus > .companyLogo > h1{
+  color: rgb(15, 210, 210);
+}
+.companyLogo h1{
+  color: rgb(127, 127, 127);
+ 
+  margin: 0;
+  transition: color 0.2s ease-in-out;
+}
+.companyLogo img{
+  
+  width: 50px;
+  height: 50px;
+}
+
+
+.navBtns{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.navBtns button{
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(127, 127, 127);
+  background-color: transparent;
+  outline: none;
+ 
+  height: 80px;
+  border: none;
+  transition: color 0.2s ease-in-out;
+}
+.navBtns button:hover, .navBtns button:focus{
+  cursor: pointer;
+  color: rgb(15, 210, 210);
+}
+.navDropdown{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 1rem;
+}
+.aboutDropdownMenu, .serviceDropdownMenu{
+  left: 0%;
+  top: 100%;
+  position: absolute;
+  padding: 0px 15px 15px 15px;
+  border: solid rgb(239, 239, 239);
+  background-color: white;
+  border-top-color: white;
+  box-shadow: 0px 4px 4px 1px rgb(217, 217, 217);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.1s ease-in-out,
+              transform 0.1s ease-in-out;
+  z-index: 2;
+  h3{
+    color:rgb(127, 127, 127);
+  }
+}
+.aboutDropdownMenu{
+  width: 300px;
+}
+.serviceDropdownMenu{
+  display: grid;
+  grid-template-columns: repeat(2, 200px);
+}
+.navDropdown button:hover + [class*="DropdownMenu"],
+.navDropdown button:focus + [class*="DropdownMenu"],
+.navDropdown button + [class*="DropdownMenu"]:hover{
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+}
+.navDropdown button + [class*="DropdownMenu"]{
+  visibility: hidden;
+}
+.navDropdown a{
+  outline: none;
+  transition: color 0.2s ease-in-out;
+}
+.navDropdown a:hover, .navDropdown a:focus{
+  color: rgb(12, 157, 157);
+}
+
+
+.rightSection{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+
+.accountSection{
+  display: flex;
+  gap: 1rem;
+}
+.accountSection button{
+  width: 125px;
+  height: 35px;
+  cursor: pointer;
+  
+  outline: none;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  color: rgb(127, 127, 127);
+  background-color: white;
+  border: solid 1px rgb(209, 209, 209);
+  border-radius: 50px;
+  transition: color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out,
+              border-color 0.2s ease-in-out;
+}
+.accountSection button:hover, .accountSection button:focus{
+  color: white;
+  background-color: rgb(15, 210, 210);
+  border-color: rgb(15, 210, 210);
+}
+
+
+.menuSection{
+  display: none;
+}
+.menuBtn, .hideBtn{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: rgb(162, 162, 162);
+}
+
+
+.sideMenu{
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  /* gap: $sideMenuGap; */
+  bottom: 0; 
+  right: 0;
+  width: 350px;
+  height: 85.1%;
+  padding: 15px;
+  border: 1px solid transparent;
+  border-left-color: rgb(239, 239, 239);
+  background-color: white;
+  box-shadow: -10px 2px 4px 0px rgba(217, 217, 217, 0.39);
+  h1{
+    color: rgb(162, 162, 162);
+   
+    text-align: center;
+  }
+}
+.sideMenuContent{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+ /* gap: 20rem; */
+}
+.sideMenuSiteSections{
+  display: none;
+  flex-direction: column;
+  gap: 3rem;
+  button{
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid transparent;
+    font-family: 'Lato', sans-serif;
+    
+    font-size:large;
+    transition: color 0.2s ease-in-out;
+  }
+  button:hover{
+    color: rgb(15, 210, 210);
+  }
+}
+.loginSignUpSection{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.sideMenuAccountBtns{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  button{
+    height: 50px;
+    font-family: 'Lato', sans-serif;
+    font-size: medium;
+   font-weight: bold;
+    color: rgb(127, 127, 127);
+    background-color: white;
+    outline: none;
+    
+    border: solid 1px rgb(209, 209, 209);
+    border-radius: 50px;
+    transition: color 0.2s ease-in-out,
+              background-color 0.2s ease-in-out,
+              border-color 0.2s ease-in-out;
+  }
+  button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(15, 210, 210);
+    border-color: rgb(15, 210, 210);
+  }
+}
+.disclaimer{
+  
+  padding: 0px 15px 0px 15px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .sideMenu{
+    display: flex;
+  }
+  .loginSignUpSection{
+    gap: 24rem;
+  }
+  .menuSection{
+    display: block;
+  }
+  .menuBtn, .hideBtn{
+    margin-top: 10px;
+  }
+  .accountSection{
+    display: none;
+  }
+}
+@media only screen and (max-width: 985px) {
+  .sideMenuSiteSections{
+    display: flex;
+  }
+  .loginSignUpSection{
+    gap: 1rem;
+  }
+  .navBtns{
+    display: none;
+  }
+}
+/*For Mobile*/
+@media only screen and (max-width: 685px) {
+  .sideMenuSiteSections{
+    margin-top: 10px;
+    gap: 2rem;
+  }
+  .sideMenuAccountBtns{
+    gap: 1rem;
+  }
+  .sideMenu{
+    bottom: 2.5%;
+    width: 92%;
+    gap: 1rem;
+  }
+  .navBar{
+    padding-left: 15px;
+    padding-right: 20px;
+  }
+  .accountSection{
+    display: none;
+  }
+}

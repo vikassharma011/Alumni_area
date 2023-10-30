@@ -1,14 +1,15 @@
 
 import React from 'react';
 import "./event.css"
-import Topbar from '../Welcome/Topbar';
+//import Topbar from '../Welcome/Topbar';
+import Header from '../header/Header';
 //import Header from '../header/Header';
 
 
 const EventCar = ({isAuthenticated}) => {
   return (
     <div>
-       <Topbar isAuthenticated={isAuthenticated}/>
+       <Header isAuthenticated={isAuthenticated}/>
       <header>
         <div className="open">
           <span className="cls"></span>

@@ -1,0 +1,80 @@
+.serviceSection{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .serviceText{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .motto{
+    max-width: 600px;
+    font-weight: bolder;
+    font-size: 60px;
+    color: rgb(15, 210, 210);
+  }
+  .mottoSubtitle{
+    max-width: 600px;
+    font-size: 20px;
+    color: rgb(127, 127, 127);
+  }
+  .serviceButtons{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    button{
+      width: 150px;
+      height: 45px;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: medium;
+      border: 1px solid rgb(15, 210, 210);
+      border-radius: 50px;
+      color: rgb(127, 127, 127);
+      background-color: white;
+      box-shadow: 0px;
+      transition: color 0.2s ease-in-out, 
+                  background-color 0.2s ease-in-out,
+                  box-shadow 0.2s ease-in-out;
+    }
+    button:hover, button:focus{
+      color: white;
+      background-color: rgb(15, 210, 210);
+      box-shadow: 0px 0px 12px 4px rgb(154, 239, 239);
+    }
+  }
+  .serviceImage{
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease,
+                transform 0.6s ease;
+  }
+  
+  .fadeIn {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  
+
+  @media screen and (max-width: 1200px) {
+    .serviceSection{
+      margin-top: 0px;
+      flex-direction: column;
+    }
+    .serviceText{
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 630px) {
+    .serviceSection{
+      padding: 15px;
+    }
+  }
