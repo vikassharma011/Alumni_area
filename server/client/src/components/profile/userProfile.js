@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import PostDetail from "../explore/postdetail";
 import "./Profile.css";
 import { useParams } from "react-router-dom";
+import Header from "../header/Header";
 
 export default function UserProfile() {
   var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
@@ -73,6 +74,7 @@ export default function UserProfile() {
 
   return (
     <div className="profile">
+      
       {/* Profile frame */}
       <div className="profile-frame">
         {/* profile-pic */}
