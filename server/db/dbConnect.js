@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 
+dotenv.config();
 const dbConnect = async()=> {
   // use mongoose to connect this app to our database on mongoDB using the DB_URL (connection string)
   mongoose
