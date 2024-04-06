@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react'
 import "./login.css"
 import axios from "axios"
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -40,6 +43,7 @@ const Login = ({ isUserAuthenticated}) => {
     const[account,toggleAccount]= useState('login')
     const[signup,setSignup]=useState(signupInitialValues)
     const [login, setLogin] = useState(loginInitialValues);
+    const [loading, setLoading] = useState(false);
     
     const toggleSignup=()=>{
         account==='signup' ? toggleAccount('login'):toggleAccount('signup')
@@ -55,6 +59,7 @@ const Login = ({ isUserAuthenticated}) => {
     const HandleSignup = (e)=>{
        // prevent the form from refreshing the whole page
     e.preventDefault();
+    setLoading(true);
     const configuration = {
       method: "post",
       url: "/signup",
@@ -76,15 +81,20 @@ const Login = ({ isUserAuthenticated}) => {
      };
      axios(configuration)
     .then((result) => {console.log(result);
+      toast.success("User created!");
         window.confirm("user create! now click already have an account")
     }
     
     )
-    .catch((error) => {console.log(error);})
+    .catch((error) => {console.log(error);
+      toast.error("Error creating user!");
+    })
+    .finally(() => setLoading(false));
     }
 
     const HandleLogin = (e) => {
       e.preventDefault();
+      setLoading(true);
       const config = {
         method: 'post',
         url: '/login', // Update the URL to your login endpoint
@@ -101,6 +111,7 @@ const Login = ({ isUserAuthenticated}) => {
       axios(config)
         .then((response) => {
           console.log(response);
+          toast.success("Login successful!");
           // Handle the login success, e.g., store the token in local storage
           
           cookies.set("TOKEN",response.token,{
@@ -114,8 +125,10 @@ const Login = ({ isUserAuthenticated}) => {
         })
         .catch((error) => {
           console.log(error);
+          toast.error("Error logging in!"); 
           // Handle login error, e.g., show an error message to the user
-        });
+        })
+        .finally(() => setLoading(false));
     };
 
     const imgurl = "https://icons.veryicon.com/png/o/miscellaneous/domain-icons/my-account-login.png"
@@ -170,6 +183,7 @@ const Login = ({ isUserAuthenticated}) => {
     </Box>
     </Grid>
     </Grid>
+    <ToastContainer/>
     </>
   )
 }
