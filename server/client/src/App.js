@@ -40,7 +40,7 @@ function App() {
            <Route path='/create' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
            <Route path='/create' element={<CreatePost />} />
            </Route>
-          <Route path='/chats' element={<Chat/>}/>
+           {/* <Route path='/chats' element={<Chat/>}/> */}
            <Route path='/about' element={<Vision isAuthenticated={isAuthenticated}/>} />
            <Route path='/contact' element={<ContactForm isAuthenticated={isAuthenticated}/>} />
            
