@@ -70,7 +70,7 @@ const Header = ({isAuthenticated}) => {
           <Link to="/about" className='heading'>ABOUT</Link>
           <Link to="/event" className='heading'>EVENT</Link>
           <Link to="/contact" className='heading'>CONTACT</Link>
-          {/* <Link to="/chats">CHAT</Link> */}
+        
           <Link to="/profile" className='heading'>PROFILE</Link>
           <Link to="/explore" className='heading'>EXPLORE</Link>
           {!isAuthenticated ? (
@@ -93,8 +93,7 @@ const Header = ({isAuthenticated}) => {
         <MenuItem onClick={handleDrawerClose}>
           <Link to="/contact">CONTACT</Link>
         </MenuItem>
-        {/* <MenuItem onClick={handleDrawerClose}>
-          {/* <Link to="/chats">CHAT</Link> */}
+        
          
         <MenuItem onClick={handleDrawerClose}>
           <Link to="/event">EVENTS</Link>
