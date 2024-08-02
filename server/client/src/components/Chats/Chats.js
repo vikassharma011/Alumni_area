@@ -72,6 +72,8 @@ const Chat = () => {
   return (
     <div className="Chat">
       {/* Left Side */}
+    <h1 style="font-size: 80px;">please login first</h1>
+
       
       <div className="Left-side-chat">
         <LogoSearch />
