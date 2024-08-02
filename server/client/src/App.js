@@ -18,7 +18,7 @@ import Welcome from './components/Welcome/Welcome';
 import Vision from './components/about me/Vision';
 import EventCar from './components/even/events';
 import ContactForm from './components/contactus/Contactus';
-import Chat from './components/Chats/Chats';
+
 import DetailView from './components/Home/blogs/detailview';
 import Search from './components/explore/Searchuser';
 // import Search from './components/Search/Search';
